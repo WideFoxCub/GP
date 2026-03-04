@@ -201,3 +201,123 @@
         background: linear-gradient(115deg, rgba(247,231,176,.85), rgba(217,184,110,.72));
       }
 }
+/* --- DROPDOWN: OFERTA --- */
+.dropdown {
+  position: relative; /* ważne, żeby dropdown-menu pozycjonował się względem OFERTA */
+}
+
+/* button wygląda jak link w navbarze */
+.nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  color: rgba(244,244,246,.78);
+  font-weight: 600;
+  padding: .55rem .9rem;
+  border-radius: 999px;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+  font-size: .78rem;
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+
+  .nav-btn:hover {
+    color: rgba(247,231,176,.95);
+    transform: translateY(-1px);
+    background: rgba(255,255,255,.04);
+    border-color: rgba(247,231,176,.14);
+  }
+
+/* strzałka */
+.chev {
+  display: inline-block;
+  opacity: .9;
+  transform: translateY(-1px);
+  transition: transform .2s ease, opacity .2s ease;
+}
+
+/* (opcjonalnie) jak otwarte, obróć strzałkę */
+.dropdown .dropdown-toggle[aria-expanded="true"] .chev {
+  transform: translateY(-1px) rotate(180deg);
+  opacity: 1;
+}
+
+/* pływające menu pod OFERTA (nie rozpycha navbaru) */
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  min-width: 240px;
+  padding: .55rem;
+  margin: 0;
+  list-style: none;
+  border-radius: 14px;
+  background: rgba(22, 22, 28, .92);
+  border: 1px solid rgba(247,231,176,.14);
+  box-shadow: 0 22px 60px rgba(0,0,0,.55);
+  backdrop-filter: blur(10px);
+}
+
+/* elementy w dropdownie */
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: .75rem .85rem;
+  border-radius: 12px;
+  color: rgba(244,244,246,.84);
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  font-size: .75rem;
+  border: 1px solid transparent;
+  background: transparent;
+  transition: background .2s ease, border-color .2s ease, color .2s ease;
+}
+
+  .dropdown-item:hover {
+    background: rgba(255,255,255,.05);
+    border-color: rgba(247,231,176,.18);
+    color: rgba(247,231,176,.95);
+  }
+
+/* --- Mobile: dropdown ma się rozwijać "w środku" menu, a nie jako absolute --- */
+@media (max-width: 768px) {
+  .dropdown {
+    width: 100%;
+  }
+
+  .nav-btn {
+    width: 100%;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    border-radius: 0;
+    border: none;
+  }
+
+  .dropdown-menu {
+    position: static;
+    top: auto;
+    left: auto;
+    min-width: 0;
+    padding: .35rem 0 .75rem;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+    backdrop-filter: none;
+  }
+
+  .dropdown-item {
+    border-radius: 0;
+    padding: .85rem 1.75rem;
+  }
+
+    .dropdown-item:hover {
+      background: rgba(255,255,255,.04);
+      border-color: transparent;
+    }
+}

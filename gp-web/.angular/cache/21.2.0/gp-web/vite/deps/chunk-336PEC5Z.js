@@ -2,7 +2,7 @@ import {
   PlatformLocation,
   XhrFactory,
   parseCookieValue
-} from "./chunk-34LZ3KMC.js";
+} from "./chunk-UTWBMDNX.js";
 import {
   APP_BOOTSTRAP_LISTENER,
   ApplicationRef,
@@ -15,39 +15,41 @@ import {
   Injector,
   NgModule,
   NgZone,
-  Observable,
   PendingTasks,
   ResourceImpl,
   RuntimeError,
   TracingService,
   TransferState,
-  __objRest,
-  __spreadProps,
-  __spreadValues,
   assertInInjectionContext,
   computed,
-  concatMap,
   encapsulateResourceError,
-  filter,
-  finalize,
   formatRuntimeError,
   inject,
   linkedSignal,
   makeEnvironmentProviders,
   makeStateKey,
-  map,
-  of,
   performanceMarkFeature,
   runInInjectionContext,
   setClassMetadata,
   signal,
-  switchMap,
   truncateMiddle,
   ɵɵdefineInjectable,
   ɵɵdefineInjector,
   ɵɵdefineNgModule,
   ɵɵinject
-} from "./chunk-R7WWNCF2.js";
+} from "./chunk-B3NO66XW.js";
+import {
+  Observable,
+  __objRest,
+  __spreadProps,
+  __spreadValues,
+  concatMap,
+  filter,
+  finalize,
+  map,
+  of,
+  switchMap
+} from "./chunk-PJVWDKLX.js";
 
 // node_modules/@angular/common/fesm2022/_module-chunk.mjs
 var HttpHeaders = class _HttpHeaders {
@@ -2424,4 +2426,4 @@ export {
   HTTP_TRANSFER_CACHE_ORIGIN_MAP,
   withHttpTransferCache
 };
-//# sourceMappingURL=chunk-X3KTI2ZW.js.map
+//# sourceMappingURL=chunk-336PEC5Z.js.map

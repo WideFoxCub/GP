@@ -1,0 +1,19 @@
+<section class="offer-page">
+  <h1 class="page-title">{{ title }}</h1>
+
+  <p *ngIf="loading">Ładowanie…</p>
+  <p *ngIf="error">{{ error }}</p>
+
+  <div class="services-grid" *ngIf="!loading && !error">
+    <a class="service-card"
+       *ngFor="let s of services">
+      <div class="service-header">
+        <h3>{{ s.name }}</h3>
+        <span class="price">od {{ s.priceFrom }} zł</span>
+      </div>
+      <p>{{ s.description }}</p>
+    </a>
+
+    <p *ngIf="services.length === 0">Brak usług w tej kategorii.</p>
+  </div>
+</section>

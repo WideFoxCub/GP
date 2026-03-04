@@ -36,5 +36,7 @@ namespace GP.Models
         /// Czy usługa jest aktywna (widoczna dla klientów).
         /// </summary>
         public bool IsActive { get; set; } = true;
+
+        public ServiceCategory Category { get; set; }
     }
 }

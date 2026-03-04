@@ -2,26 +2,28 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+export type ServiceCategory = 'nails' | 'cosmetology';
+
 export interface ServiceDto {
   id: number;
   name: string;
   description: string;
   priceFrom: number;
-  category: 'manicure' | 'kosmetologia';
+  category: ServiceCategory;
 }
 
 export interface CreateServiceDto {
   name: string;
   description: string;
   priceFrom: number;
-  category: 'manicure' | 'kosmetologia';
+  category: ServiceCategory;
 }
 
 export interface UpdateServiceDto {
   name: string;
   description: string;
   priceFrom: number;
-  category: 'manicure' | 'kosmetologia';
+  category: ServiceCategory;
   isActive: boolean;
 }
 
@@ -56,5 +58,10 @@ export class ServiceService {
   // DELETE - usuń usługę
   deleteService(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
+  getServices(category?: ServiceCategory) {
+    if (!category) return this.http.get<ServiceDto[]>(this.apiUrl);
+    return this.http.get<ServiceDto[]>(`${this.apiUrl}?category=${category}`);
   }
 }

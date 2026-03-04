@@ -36,9 +36,9 @@ namespace GP.Data
                 entity.HasKey(e => e.Id);
 
                 // Kolumna Name - obowiązkowa, max 255 znaków
-                entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasMaxLength(255);
+                entity.HasIndex(e => new { e.Name, e.Category })
+                    .HasDatabaseName("idx_services_name_category")
+                    .IsUnique();
 
                 // Kolumna Description - obowiązkowa
                 entity.Property(e => e.Description)
@@ -57,6 +57,14 @@ namespace GP.Data
                 // Kolumna IsActive - default true
                 entity.Property(e => e.IsActive)
                     .HasDefaultValue(true);
+
+                entity.Property(e => e.Category)
+                    .HasConversion<string>()         // zapisuj jako "Nails" / "Cosmetology"
+                    .HasMaxLength(50)
+                    .IsRequired();
+
+                entity.HasIndex(e => e.Category)
+                    .HasDatabaseName("idx_services_category");
 
                 // Indeksy dla lepszej wydajności
                 entity.HasIndex(e => e.IsActive)

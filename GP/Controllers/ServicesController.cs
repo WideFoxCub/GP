@@ -30,9 +30,9 @@ namespace GP.Controllers
         /// GET: api/services
         /// </summary>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ServiceDto>>> Get()
+        public async Task<ActionResult<IEnumerable<ServiceDto>>> Get([FromQuery] string? category)
         {
-            var services = await _serviceService.GetAllServicesAsync();
+            var services = await _serviceService.GetAllServicesAsync(category);
             return Ok(services);
         }
 

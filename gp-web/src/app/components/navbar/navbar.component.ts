@@ -1,44 +1,56 @@
-import { Component, HostListener } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Component, HostListener, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router, NavigationEnd, RouterLink, RouterLinkActive } from '@angular/router';
+import { filter, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, CommonModule],
+  imports: [CommonModule, RouterLink, RouterLinkActive],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnDestroy {
   isMenuOpen = false;
   isOfferOpen = false;
 
-  toggleMenu(): void {
-    this.isMenuOpen = !this.isMenuOpen;
+  private sub: Subscription;
 
-    // jak zamykasz hamburgera to zamknij też submenu
-    if (!this.isMenuOpen) {
-      this.isOfferOpen = false;
-    }
+  constructor(private router: Router) {
+    this.sub = this.router.events
+      .pipe(filter(e => e instanceof NavigationEnd))
+      .subscribe(() => {
+        this.isOfferOpen = false;
+        this.isMenuOpen = false;
+      });
   }
 
-  closeMenu(): void {
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
+  }
+
+  toggleMenu(): void {
+    this.isMenuOpen = !this.isMenuOpen;
+    if (!this.isMenuOpen) this.isOfferOpen = false;
+  }
+
+  closeMenu(e?: Event): void {
+    e?.stopPropagation();
     this.isMenuOpen = false;
     this.isOfferOpen = false;
   }
 
-  toggleOfferDropdown(event: Event): void {
-    // nie klikaj “po drodze” w inne elementy (np. li)
-    event.stopPropagation();
+  toggleOfferDropdown(e: MouseEvent): void {
+    e.stopPropagation();
     this.isOfferOpen = !this.isOfferOpen;
   }
 
-  closeMenuAndDropdown(): void {
-    this.isMenuOpen = false;
+  closeMenus(e?: Event): void {
+    e?.stopPropagation();
     this.isOfferOpen = false;
+    this.isMenuOpen = false;
   }
 
-  // Klik poza menu = zamknij rozwijane (opcjonalnie)
   @HostListener('document:click')
   onDocumentClick(): void {
     this.isOfferOpen = false;

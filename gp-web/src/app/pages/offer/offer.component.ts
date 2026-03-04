@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ServiceService, ServiceDto } from '../../services/services.service';
-import { SeoService } from '../../services/seo.service';
+import { ActivatedRoute } from '@angular/router';
+import { ServiceService, ServiceDto, ServiceCategory } from '../../services/services.service';
 
 @Component({
   selector: 'app-offer',
@@ -11,34 +11,39 @@ import { SeoService } from '../../services/seo.service';
   styleUrls: ['./offer.component.css']
 })
 export class OfferComponent implements OnInit {
-
   services: ServiceDto[] = [];
   loading = true;
   error: string | null = null;
 
+  category: ServiceCategory | null = null;
+
   constructor(
     private serviceService: ServiceService,
-    private cdr: ChangeDetectorRef,
-    private seo: SeoService
+    private route: ActivatedRoute,
+    private cdr: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
-    this.seo.setServicePageSeo();
-    this.loadServices();
+    this.route.queryParamMap.subscribe(qp => {
+      const cat = qp.get('cat');
+      this.category = (cat === 'nails' || cat === 'cosmetology') ? cat : null;
+      this.load();
+    });
   }
 
-  loadServices(): void {
+  private load(): void {
     this.loading = true;
     this.error = null;
+    this.cdr.detectChanges();
 
-    this.serviceService.getAllServices().subscribe({
-      next: (data: ServiceDto[]) => {
+    this.serviceService.getServices(this.category ?? undefined).subscribe({
+      next: (data) => {
         this.services = data;
         this.loading = false;
         this.cdr.detectChanges();
       },
       error: () => {
-        this.error = 'Błąd przy ładowaniu usług';
+        this.error = 'Błąd przy pobieraniu usług.';
         this.loading = false;
         this.cdr.detectChanges();
       }

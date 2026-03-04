@@ -35,6 +35,11 @@ namespace GP.Validators
             // IsActive - musi być boolean (zawsze spełniony)
             RuleFor(x => x.IsActive)
                 .NotNull();
+
+            RuleFor(x => x.Category)
+                .NotEmpty()
+                .Must(c => c.ToLower() is "nails" or "cosmetology")
+                .WithMessage("Category musi być 'nails' albo 'cosmetology'.");
         }
     }
 }

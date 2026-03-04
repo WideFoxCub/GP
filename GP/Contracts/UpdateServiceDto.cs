@@ -8,6 +8,7 @@ namespace GP.Contracts
         string Name,
         string Description,
         decimal PriceFrom,
-        bool IsActive
+        bool IsActive,
+        string Category
     );
 }

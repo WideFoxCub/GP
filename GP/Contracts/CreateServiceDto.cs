@@ -7,6 +7,7 @@ namespace GP.Contracts
     public record CreateServiceDto(
         string Name,
         string Description,
-        decimal PriceFrom
+        decimal PriceFrom,
+        string Category
     );
 }

@@ -25,7 +25,8 @@ namespace GP.Data
                     Description = "Profesjonalne opracowanie paznokci i aplikacja hybrydy. Trwa ok. 60 minut. Idealna do pracy biurowej.",
                     PriceFrom = 150m,
                     IsActive = true,
-                    CreatedAt = DateTime.UtcNow
+                    CreatedAt = DateTime.UtcNow,
+                    Category = ServiceCategory.Nails
                 },
                 new()
                 {
@@ -33,7 +34,8 @@ namespace GP.Data
                     Description = "Kompleksowy zabieg pielęgnacyjny stóp z masażem i peellingiem. Trwa ok. 45 minut.",
                     PriceFrom = 180m,
                     IsActive = true,
-                    CreatedAt = DateTime.UtcNow
+                    CreatedAt = DateTime.UtcNow,
+                    Category = ServiceCategory.Nails
                 },
                 new()
                 {
@@ -41,7 +43,8 @@ namespace GP.Data
                     Description = "Głębokie oczyszczanie, peepling i pielęgnacja twarzy. Idealny dla skóry problemowej. Trwa ok. 90 minut.",
                     PriceFrom = 200m,
                     IsActive = true,
-                    CreatedAt = DateTime.UtcNow
+                    CreatedAt = DateTime.UtcNow,
+                    Category = ServiceCategory.Cosmetology
                 },
                 new()
                 {
@@ -49,7 +52,8 @@ namespace GP.Data
                     Description = "Laminacja i farbowanie rzęs, oraz tintowanie brwi. Efekt naturalny i piękny. Trwa ok. 45 minut.",
                     PriceFrom = 120m,
                     IsActive = true,
-                    CreatedAt = DateTime.UtcNow
+                    CreatedAt = DateTime.UtcNow,
+                    Category = ServiceCategory.Cosmetology
                 },
                 new()
                 {
@@ -57,7 +61,8 @@ namespace GP.Data
                     Description = "Profesjonalne stylizowanie brwi, tintowanie i pielęgnacja. Indywidualne dopasowanie do kształtu twarzy.",
                     PriceFrom = 90m,
                     IsActive = true,
-                    CreatedAt = DateTime.UtcNow
+                    CreatedAt = DateTime.UtcNow,
+                    Category = ServiceCategory.Cosmetology
                 },
                 new()
                 {
@@ -65,7 +70,8 @@ namespace GP.Data
                     Description = "Całościowy masaż ciała o działaniu relaksującym. Doskonały do regeneracji i odprężenia. Trwa 60 minut.",
                     PriceFrom = 250m,
                     IsActive = true,
-                    CreatedAt = DateTime.UtcNow
+                    CreatedAt = DateTime.UtcNow,
+                    Category = ServiceCategory.Cosmetology
                 }
             };
 

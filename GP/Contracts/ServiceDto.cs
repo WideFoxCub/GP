@@ -4,6 +4,7 @@
         int Id,
         string Name,
         string Description,
-        decimal PriceFrom
+        decimal PriceFrom,
+        string Category
     );
 }

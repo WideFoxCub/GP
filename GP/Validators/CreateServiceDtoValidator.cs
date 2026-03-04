@@ -31,6 +31,11 @@ namespace GP.Validators
             RuleFor(x => x.PriceFrom)
                 .GreaterThan(0)
                     .WithMessage("Cena musi być większa niż 0");
+
+            RuleFor(x => x.Category)
+                .NotEmpty()
+                .Must(c => c.ToLower() is "nails" or "cosmetology")
+                .WithMessage("Category musi być 'nails' albo 'cosmetology'.");
         }
     }
 }
