@@ -1,0 +1,29 @@
+<nav class="navbar" aria-label="Main navigation">
+  <div class="navbar-container">
+    <div class="navbar-brand">
+      <a href="/" title="G&P Atelier Urody - Salon kosmetyczny w Mikołowie">
+        <span class="logo logo-mark">
+          <img src="assets/images/GP_logo.jpg" alt="G&P Atelier Urody logo">
+        </span>
+        <span class="logo-text">G&P Atelier Urody</span>
+      </a>
+    </div>
+
+    <!-- Hamburger Menu -->
+    <button class="hamburger" (click)="toggleMenu()" [class.active]="isMenuOpen" aria-label="Toggle navigation menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Navigation Links -->
+    <ul class="navbar-menu" [class.active]="isMenuOpen">
+      <li><a routerLink="/home" routerLinkActive="active" (click)="closeMenu()" title="Strona główna - G&P Atelier Urody">Strona Główna</a></li>
+      <li><a routerLink="/about" routerLinkActive="active" (click)="closeMenu()" title="O nas - G&P Atelier Urody w Mikołowie">O Nas</a></li>
+      <li><a routerLink="/team" routerLinkActive="active" (click)="closeMenu()" title="Nasz zespół - Gabriela Włoszek, Paula Rumin">Zespół</a></li>
+      <li><a routerLink="/offer" routerLinkActive="active" (click)="closeMenu()" title="Oferta usług - Manicure, Pedicure, Zabiegi na brwi, rzęsy, depilacja">Oferta</a></li>
+      <li><a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()" title="Kontakt i godziny otwarcia - Podleska 31/2, Mikołów">Kontakt</a></li>
+      <li class="admin-link"><a routerLink="/admin" routerLinkActive="active" (click)="closeMenu()">🔐 Admin</a></li>
+    </ul>
+  </div>
+</nav>

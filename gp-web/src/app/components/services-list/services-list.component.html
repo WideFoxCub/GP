@@ -1,0 +1,33 @@
+<div class="services-container">
+  <h1>💄 Usługi Salonu Beauty</h1>
+
+  <!-- Loading -->
+  <div *ngIf="loading" class="loading">
+    ⏳ Ładowanie usług...
+  </div>
+
+  <!-- Error -->
+  <div *ngIf="error" class="error">
+    ❌ {{ error }}
+  </div>
+
+  <!-- Services List -->
+  <div *ngIf="!loading && !error" class="services-grid">
+    <div *ngFor="let service of services" class="service-card">
+      <div class="service-header">
+        <h2>{{ service.name }}</h2>
+        <span class="price">{{ service.priceFrom }} zł</span>
+      </div>
+      <p class="description">{{ service.description }}</p>
+      <div class="actions">
+        <button class="btn btn-edit">✏️ Edytuj</button>
+        <button class="btn btn-delete" (click)="deleteService(service.id)">🗑️ Usuń</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <div *ngIf="!loading && services.length === 0 && !error" class="empty">
+    <p>Brak dostępnych usług 😔</p>
+  </div>
+</div>

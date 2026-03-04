@@ -1,0 +1,371 @@
+/* =========================
+   PREMIUM GLAM — SITE THEME
+   spójne z footerem
+   ========================= */
+
+/* 0) Global reset-ish */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  color: rgba(244,244,246,.9);
+  background: linear-gradient(180deg, #070709, #0c0c10);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+}
+
+/* 1) Tokens (Twoje + drobne dodatki) */
+:root {
+  --bg0: #070709;
+  --bg1: #0c0c10;
+  --panel: rgba(255,255,255,.04);
+  --panel2: rgba(255,255,255,.06);
+  --text: #f4f4f6;
+  --muted: rgba(244,244,246,.72);
+  --gold1: #f7e7b0;
+  --gold2: #d9b86e;
+  --gold3: #a8843a;
+  --ring: 0 0 0 1px rgba(247,231,176,.22), 0 0 0 4px rgba(217,184,110,.06);
+  --shadow: 0 20px 70px rgba(0,0,0,.55);
+  --shadow2: 0 14px 45px rgba(0,0,0,.45);
+  --radius: 16px;
+  --radius-sm: 12px;
+  --ease: cubic-bezier(.2,.8,.2,1);
+  --border: 1px solid rgba(247,231,176,.16);
+  --border-strong: 1px solid rgba(247,231,176,.26);
+  --maxw: 1200px;
+}
+
+/* 2) Główny layout strony (tło jak footer, ale większe) */
+.page {
+  min-height: 100%;
+  background: radial-gradient(900px 260px at 50% 0%, rgba(217,184,110,.16), transparent 65%), radial-gradient(1200px 500px at 50% -10%, rgba(217,184,110,.12), transparent 60%), linear-gradient(180deg, var(--bg0), var(--bg1));
+  position: relative;
+  overflow-x: hidden;
+}
+
+  /* opcjonalnie: “grain” jak u Ciebie */
+  .page::after {
+    content: "";
+    position: fixed;
+    inset: -40%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+    opacity: .06;
+    pointer-events: none;
+    transform: rotate(8deg);
+    z-index: 0;
+  }
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 4.5rem 2rem;
+}
+
+/* 3) Nagłówki sekcji: identyczna “gold sheen” logika */
+.page-title,
+h1.page-title {
+  text-align: center;
+  font-size: clamp(2.1rem, 3.2vw, 3.2rem);
+  margin: 0 0 1rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  background: linear-gradient( 115deg, var(--gold1) 0%, var(--gold2) 35%, #ffffff 50%, var(--gold2) 65%, var(--gold3) 100% );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 16px rgba(217,184,110,.12);
+}
+
+.page-subtitle {
+  text-align: center;
+  margin: 0 auto 2.6rem;
+  max-width: 70ch;
+  color: rgba(244,244,246,.68);
+  line-height: 1.7;
+}
+
+/* 4) Panel / karta — baza (spójna z Twoimi cardami) */
+.panel,
+.card,
+.content,
+.team-member,
+.info-card,
+.service-card {
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  border: 1px solid rgba(247,231,176,.18);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* content block (Twoje) */
+.content {
+  padding: 2.2rem;
+  line-height: 1.85;
+  font-size: 1.06rem;
+  color: rgba(244,244,246,.86);
+}
+
+  .content p {
+    margin: 1rem 0;
+  }
+
+/* 5) Gridy */
+.grid,
+.team-grid,
+.contact-info,
+.services-grid {
+  display: grid;
+  gap: 1.6rem;
+  margin-top: 2rem;
+}
+
+  .grid.cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .grid.cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .grid.cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+/* 6) Hover — “float”, nie skakanie */
+.card,
+.team-member,
+.info-card,
+.service-card {
+  padding: 1.6rem;
+  transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease), background .35s var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+
+  .card::before,
+  .team-member::before,
+  .info-card::before,
+  .service-card::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    background: radial-gradient(600px 160px at 20% 0%, rgba(247,231,176,.18), transparent 60%);
+    opacity: 0;
+    transition: opacity .35s var(--ease);
+    pointer-events: none;
+  }
+
+  .card:hover,
+  .team-member:hover,
+  .info-card:hover,
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow);
+    border-color: rgba(247,231,176,.32);
+  }
+
+    .card:hover::before,
+    .team-member:hover::before,
+    .info-card:hover::before,
+    .service-card:hover::before {
+      opacity: 1;
+    }
+
+  /* 7) Typografia w kartach */
+  .card h2, .card h3,
+  .team-member h3,
+  .info-card h3,
+  .service-header h2 {
+    margin: .8rem 0 .6rem;
+    color: rgba(247,231,176,.92);
+    letter-spacing: .02em;
+  }
+
+  .card p,
+  .team-member p,
+  .info-card p,
+  .description {
+    color: var(--muted);
+  }
+
+/* 8) Linki (jak w footerze) */
+a {
+  color: rgba(244,244,246,.86);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(247,231,176,.22);
+  transition: color .25s ease, border-color .25s ease, transform .25s ease;
+}
+
+  a:hover {
+    color: rgba(247,231,176,.95);
+    border-bottom-color: rgba(247,231,176,.5);
+  }
+
+/* 9) Buttons — spójne ze “social ghost” */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+  height: 46px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(247,231,176,.16);
+  background: rgba(255,255,255,.04);
+  color: rgba(244,244,246,.92);
+  box-shadow: 0 18px 45px rgba(0,0,0,.35);
+  cursor: pointer;
+  transition: transform .3s ease, border-color .3s ease, background .3s ease;
+}
+
+  .btn:hover {
+    transform: translateY(-2px);
+    border-color: rgba(247,231,176,.32);
+    background: rgba(255,255,255,.06);
+  }
+
+  .btn:focus-visible {
+    outline: none;
+    box-shadow: var(--ring), 0 18px 45px rgba(0,0,0,.35);
+  }
+
+  .btn.primary {
+    background: linear-gradient(115deg, rgba(247,231,176,.9), rgba(217,184,110,.8));
+    color: rgba(8,8,10,.95);
+    border: 1px solid rgba(255,255,255,.16);
+  }
+
+    .btn.primary:hover {
+      transform: translateY(-3px);
+    }
+
+/* 10) Formularze / inputy */
+.input, input, textarea, select {
+  width: 100%;
+  padding: .9rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(247,231,176,.16);
+  background: rgba(255,255,255,.03);
+  color: rgba(244,244,246,.92);
+  outline: none;
+  box-shadow: none;
+  transition: border-color .25s ease, background .25s ease, box-shadow .25s ease;
+}
+
+  input::placeholder, textarea::placeholder {
+    color: rgba(244,244,246,.45);
+  }
+
+  input:focus, textarea:focus, select:focus {
+    border-color: rgba(247,231,176,.35);
+    background: rgba(255,255,255,.04);
+    box-shadow: var(--ring);
+  }
+
+/* 11) Badge / avatar */
+.badge,
+.team-member .avatar {
+  display: inline-grid;
+  place-items: center;
+  width: 74px;
+  height: 74px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, rgba(247,231,176,.22), rgba(255,255,255,.04));
+  border: 1px solid rgba(247,231,176,.22);
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+
+/* 12) Price pill (Twoje) */
+.service-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: .9rem;
+}
+
+.price {
+  padding: .45rem .85rem;
+  border-radius: 999px;
+  font-weight: 650;
+  font-size: .9rem;
+  letter-spacing: .02em;
+  color: rgba(8,8,10,.95);
+  background: linear-gradient(115deg, var(--gold1), var(--gold2));
+  box-shadow: 0 10px 24px rgba(217,184,110,.18);
+  border: 1px solid rgba(255,255,255,.18);
+  white-space: nowrap;
+}
+
+/* 13) Separatory / sekcje (jak “footer-bottom” vibe) */
+.divider {
+  height: 1px;
+  background: rgba(247,231,176,.10);
+  border: 0;
+  margin: 2.4rem 0;
+}
+
+.section-bottom {
+  border-top: 1px solid rgba(247,231,176,.10);
+  padding-top: 1.2rem;
+  color: rgba(244,244,246,.6);
+  font-size: .95rem;
+}
+
+/* 14) Stany */
+.loading {
+  text-align: center;
+  padding: 2rem;
+  color: rgba(247,231,176,.9);
+  font-size: 1.1rem;
+}
+
+.error {
+  text-align: center;
+  padding: 1.6rem;
+  border-radius: var(--radius);
+  background: rgba(255, 90, 120, .10);
+  border: 1px solid rgba(255, 90, 120, .35);
+  color: rgba(255, 180, 190, .95);
+  box-shadow: 0 18px 50px rgba(0,0,0,.35);
+}
+
+/* 15) Responsive */
+@media (max-width: 900px) {
+  .container {
+    padding: 3.2rem 1.4rem;
+  }
+
+  .grid.cols-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .grid.cols-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .container {
+    padding: 2.8rem 1rem;
+  }
+
+  .grid.cols-4,
+  .grid.cols-3,
+  .grid.cols-2 {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,233 @@
+/* =========================
+   TEAM — kontener jak Kontakt
+   ========================= */
+
+.team-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 28px;
+  padding-top: 3.2rem;
+  padding: 2.0rem 2rem;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(900px 260px at 50% 0%, rgba(217,184,110,.16), transparent 65%), linear-gradient(180deg, #070709, #0c0c10);
+  border: 1px solid rgba(247,231,176,.10);
+  border-radius: 22px;
+  box-shadow: 0 20px 70px rgba(0,0,0,.55);
+}
+
+  .team-page::after {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+    opacity: .06;
+    pointer-events: none;
+    transform: rotate(8deg);
+  }
+
+  /* Nagłówek identyczny jak Kontakt */
+  .team-page .page-title {
+    text-align: center;
+    font-size: clamp(2.1rem, 3.2vw, 3.2rem);
+    margin: 0 0 2.0rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    background: linear-gradient(115deg, #f7e7b0 0%, #d9b86e 35%, #ffffff 50%, #d9b86e 65%, #a8843a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 16px rgba(217,184,110,.12);
+  }
+
+/* Intro jako karta */
+.team-lead {
+  margin-bottom: 1.6rem;
+}
+
+  .team-lead p {
+    margin: 0;
+    color: rgba(244,244,246,.78);
+    line-height: 1.75;
+  }
+
+/* Grid członków */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6rem;
+  align-items: stretch;
+}
+
+  /* Karty — jeśli masz już globalne .info-card z Contact,
+   to wystarczy, ale daję wersję "bezpieczną" tylko dla Team */
+  .team-grid .info-card,
+  .team-lead.info-card {
+    padding: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+    border: 1px solid rgba(247,231,176,.16);
+    box-shadow: 0 14px 45px rgba(0,0,0,.45);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+    transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s cubic-bezier(.2,.8,.2,1), border-color .35s cubic-bezier(.2,.8,.2,1);
+  }
+
+    .team-grid .info-card::before,
+    .team-lead.info-card::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      background: radial-gradient(700px 200px at 20% 0%, rgba(247,231,176,.14), transparent 60%);
+      opacity: 0;
+      transition: opacity .35s cubic-bezier(.2,.8,.2,1);
+      pointer-events: none;
+    }
+
+    .team-grid .info-card:hover,
+    .team-lead.info-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 70px rgba(0,0,0,.55);
+      border-color: rgba(247,231,176,.30);
+    }
+
+      .team-grid .info-card:hover::before,
+      .team-lead.info-card:hover::before {
+        opacity: 1;
+      }
+
+    .team-grid .team-member h3,
+    .team-lead.info-card h3 {
+      margin: 0 0 .9rem;
+      font-size: .95rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(247,231,176,.88);
+    }
+
+/* Avatar w kółku */
+.team-member .avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  margin-bottom: .9rem;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(247,231,176,.16);
+  box-shadow: 0 10px 24px rgba(0,0,0,.22);
+  font-size: 26px;
+}
+
+/* Rola + opis */
+.team-member .role {
+  margin: 0 0 .8rem;
+  color: rgba(244,244,246,.72);
+  letter-spacing: .04em;
+}
+
+.team-member .desc {
+  margin: 0;
+  color: rgba(244,244,246,.78);
+  line-height: 1.75;
+}
+
+/* Rating */
+.team-member .rating {
+  margin-top: 1.0rem;
+  letter-spacing: .1em;
+  color: rgba(247,231,176,.85);
+}
+
+/* Lista wierszy */
+.team-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+/* Jeden wiersz = jedna osoba */
+.team-row {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+/* Zdjęcie w ramce */
+.team-photo {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(247,231,176,.18);
+  background: rgba(255,255,255,.03);
+  box-shadow: 0 14px 45px rgba(0,0,0,.35);
+}
+
+  .team-photo img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+    filter: saturate(1.03) contrast(1.02);
+  }
+
+/* Treść */
+.team-body h3 {
+  margin: 0 0 .55rem;
+  font-size: 1.05rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(247,231,176,.92);
+}
+
+.team-body .role {
+  margin: 0 0 .85rem;
+  color: rgba(244,244,246,.72);
+  letter-spacing: .04em;
+}
+
+.team-body .desc {
+  margin: 0;
+  color: rgba(244,244,246,.78);
+  line-height: 1.75;
+}
+
+.team-body .rating {
+  margin-top: 1.0rem;
+  letter-spacing: .1em;
+  color: rgba(247,231,176,.85);
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .team-row {
+    grid-template-columns: 1fr;
+  }
+
+  .team-photo img {
+    height: 260px;
+  }
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .team-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .team-page {
+    padding: 3rem 1rem;
+    border-radius: 18px;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+}

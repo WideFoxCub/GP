@@ -1,0 +1,34 @@
+<div class="page-container offer-page">
+  <h1 class="page-title">Nasza Oferta</h1>
+  <p class="offer-intro">
+    G&P Atelier Urody oferuje kompletny katalog profesjonalnych usług kosmetycznych.
+    Wszystkie zabiegi wykonywane są przez doświadczonych specjalistów. Rezerwacja dostępna na <strong>Booksy</strong>!
+  </p>
+
+  <div *ngIf="loading" class="loading">⏳ Ładowanie usług...</div>
+  <div *ngIf="error" class="error">❌ {{ error }}</div>
+
+  <div *ngIf="!loading && !error" class="services-grid">
+    <div *ngFor="let service of services" class="service-card" itemscope itemtype="https://schema.org/Service">
+      <div class="service-header">
+        <h3 itemprop="name">{{ service.name }}</h3>
+        <span class="price" itemprop="priceRange">od {{ service.priceFrom }} zł</span>
+      </div>
+
+      <p class="description" itemprop="description">{{ service.description }}</p>
+
+      <meta itemprop="areaServed" content="Mikołów, Tychy, Katowice">
+      <meta itemprop="provider" content="G&P Atelier Urody">
+    </div>
+  </div>
+
+  <div class="booking-section">
+    <h2>Umów Wizytę</h2>
+    <p>Rezerwuj swój zabieg online na platformie Booksy:</p>
+    <a href="https://booksy.com/pl-pl/204567_g-p-atelier-urody_salon-kosmetyczny_11835_mikolow"
+       target="_blank" rel="noopener noreferrer"
+       class="booksy-btn">
+      📅 Rezerwuj na Booksy
+    </a>
+  </div>
+</div>

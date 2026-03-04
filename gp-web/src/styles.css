@@ -1,0 +1,74 @@
+/* =========================
+   GLOBAL STYLES — PREMIUM
+   ========================= */
+
+/* 1) Reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 2) Root / Body */
+html, body {
+  width: 100%;
+  min-height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  /* Spójne tło z footerem */
+  background: radial-gradient(900px 260px at 50% 0%, rgba(217,184,110,.14), transparent 65%), linear-gradient(180deg, #070709, #0c0c10);
+  color: rgba(244,244,246,.92);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+/* 3) App root */
+app-root {
+  display: block;
+  min-height: 100vh;
+}
+
+/* 4) Global link style (footer-consistent) */
+a {
+  color: rgba(244,244,246,.9);
+  text-decoration: none;
+  transition: color .25s ease;
+}
+
+  a:hover {
+    color: rgba(247,231,176,.95);
+  }
+
+/* 5) Scrollbar — luksusowy detal */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0c0c10;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #d9b86e, #a8843a);
+  border-radius: 999px;
+}
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #f7e7b0, #d9b86e);
+  }
+
+/* 6) Selekcja tekstu */
+::selection {
+  background: rgba(217,184,110,.35);
+  color: #000;
+}

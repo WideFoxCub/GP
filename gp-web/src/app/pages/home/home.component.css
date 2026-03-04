@@ -1,0 +1,236 @@
+/* =========================
+   HOME — spójne z ABOUT/OFFER
+   ========================= */
+
+.home-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 28px;
+  padding: 2.0rem 2rem;
+  position: relative;
+}
+
+/* =========================
+   HERO — karta jak about-page
+   ========================= */
+.hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: 22px;
+  padding: 3.2rem 2rem;
+  background: radial-gradient(900px 260px at 50% 0%, rgba(217,184,110,.16), transparent 65%), linear-gradient(180deg, #070709, #0c0c10);
+  border: 1px solid rgba(247,231,176,.10);
+  box-shadow: 0 20px 70px rgba(0,0,0,.55);
+}
+
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+    opacity: .06;
+    pointer-events: none;
+    transform: rotate(8deg);
+  }
+
+  /* dodatkowy delikatny glow na górze (jak w kartach) */
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    background: radial-gradient(900px 260px at 20% 0%, rgba(247,231,176,.14), transparent 62%);
+    opacity: 1;
+    pointer-events: none;
+  }
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  margin: 0 0 1rem;
+  font-size: clamp(2.2rem, 3.6vw, 3.4rem);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  background: linear-gradient(115deg, #f7e7b0 0%, #d9b86e 35%, #ffffff 50%, #d9b86e 65%, #a8843a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 16px rgba(217,184,110,.12);
+}
+
+.hero-subtitle {
+  margin: 0 auto 1.6rem;
+  color: rgba(244,244,246,.78);
+  line-height: 1.75;
+  font-size: 1.05rem;
+}
+
+/* CTA */
+.hero-actions {
+  display: flex;
+  gap: .9rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* GŁÓWNY przycisk – jak booksy-btn, ale nie na 100% szerokości */
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  padding: 0 22px;
+  border-radius: 999px;
+  font-weight: 800;
+  letter-spacing: .02em;
+  border: 1px solid rgba(255,255,255,.16);
+  background: linear-gradient(115deg, rgba(247,231,176,.92), rgba(217,184,110,.78));
+  color: rgba(8,8,10,.95);
+  box-shadow: 0 12px 28px rgba(217,184,110,.18);
+  text-decoration: none;
+  transition: transform .3s ease, filter .3s ease;
+}
+
+  .cta-button:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.03);
+  }
+
+/* Drugi przycisk – “szklany” */
+.ghost-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  padding: 0 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  letter-spacing: .02em;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(247,231,176,.16);
+  color: rgba(244,244,246,.82);
+  text-decoration: none;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+}
+
+  .ghost-button:hover {
+    transform: translateY(-3px);
+    border-color: rgba(247,231,176,.30);
+    box-shadow: 0 14px 45px rgba(0,0,0,.45);
+  }
+
+/* =========================
+   FEATURES — sekcja + karty jak info-card
+   ========================= */
+
+.features {
+  margin-top: 1.8rem;
+}
+
+.section-title {
+  text-align: center;
+  font-size: .95rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(247,231,176,.88);
+  margin: 0 0 1.2rem;
+}
+
+/* siatka kart */
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.6rem;
+  align-items: stretch;
+}
+
+/* karta 1:1 jak about-grid .info-card */
+.feature-card {
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  border: 1px solid rgba(247,231,176,.16);
+  box-shadow: 0 14px 45px rgba(0,0,0,.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s cubic-bezier(.2,.8,.2,1), border-color .35s cubic-bezier(.2,.8,.2,1);
+}
+
+  .feature-card::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    background: radial-gradient(700px 200px at 20% 0%, rgba(247,231,176,.14), transparent 60%);
+    opacity: 0;
+    transition: opacity .35s cubic-bezier(.2,.8,.2,1);
+    pointer-events: none;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 70px rgba(0,0,0,.55);
+    border-color: rgba(247,231,176,.30);
+  }
+
+    .feature-card:hover::before {
+      opacity: 1;
+    }
+
+  /* elementy karty */
+  .feature-card .icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: .9rem;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(247,231,176,.14);
+    box-shadow: 0 10px 24px rgba(0,0,0,.35);
+    font-size: 1.35rem;
+  }
+
+  .feature-card h3 {
+    margin: 0 0 .9rem;
+    font-size: .95rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: rgba(247,231,176,.88);
+  }
+
+  .feature-card p {
+    margin: 0;
+    color: rgba(244,244,246,.78);
+    line-height: 1.75;
+  }
+
+/* Responsive */
+@media (max-width: 1000px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .home-page {
+    padding: 0 1rem 2.2rem;
+  }
+
+  .hero {
+    padding: 3rem 1rem;
+    border-radius: 18px;
+  }
+}

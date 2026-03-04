@@ -1,0 +1,30 @@
+<div class="admin-container">
+  <!-- Login Form -->
+  <div *ngIf="!isLoggedIn" class="login-section">
+    <div class="login-card">
+      <h1>🔐 Admin Panel</h1>
+      <p>Wpisz hasło aby zarządzać usługami</p>
+      <input 
+        type="password" 
+        [(ngModel)]="password" 
+        placeholder="Hasło" 
+        (keyup.enter)="login()"
+        class="password-input"
+      >
+      <button (click)="login()" class="login-btn">Zaloguj</button>
+    </div>
+  </div>
+
+  <!-- Admin Dashboard -->
+  <div *ngIf="isLoggedIn" class="admin-dashboard">
+    <div class="admin-header">
+      <h1>📊 Panel Administracyjny</h1>
+      <button (click)="logout()" class="logout-btn">Wyloguj</button>
+    </div>
+    
+    <div class="admin-content">
+      <p>Tutaj będzie zarządzanie usługami (dodawanie, edycja, usuwanie)</p>
+      <p>Coming soon... 🚀</p>
+    </div>
+  </div>
+</div>
