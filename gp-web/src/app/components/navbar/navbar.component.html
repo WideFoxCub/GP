@@ -1,11 +1,9 @@
 <nav class="navbar" aria-label="Main navigation">
   <div class="navbar-container">
     <div class="navbar-brand">
-      <a href="/" title="G&P Atelier Urody - Salon kosmetyczny w Mikołowie">
-        <span class="logo logo-mark">
-          <img src="assets/images/GP_logo.jpg" alt="G&P Atelier Urody logo">
-        </span>
-        <span class="logo-text">G&P Atelier Urody</span>
+      <a href="/" title="G&P Atelier Urody - Salon kosmetyczny w Mikołowie" class="logo">
+        <img src="/assets/images/ATELIER_URODY.png" alt="G&P Atelier Urody">
+        <span class="visually-hidden"></span>
       </a>
     </div>
 
@@ -45,7 +43,14 @@
         </ul>
       </li>
       <li><a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()" title="Kontakt i godziny otwarcia - Podleska 31/2, Mikołów">Kontakt</a></li>
-      <li class="admin-link"><a routerLink="/admin" routerLinkActive="active" (click)="closeMenu()">🔐 Admin</a></li>
+      <li class="admin-link">
+        <a href="https://booksy.com/pl-pl/204567_g-p-atelier-urody_salon-kosmetyczny_11835_mikolow"
+           target="_blank"
+           rel="noopener"
+           (click)="closeMenu()">
+          Umów wizytę
+        </a>
+      </li>
     </ul>
     </div>
   </nav>

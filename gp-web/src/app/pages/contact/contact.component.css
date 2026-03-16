@@ -1,297 +1,228 @@
 .contact-page {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 3.5rem 3rem 4.5rem;
+  background: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  color: #4D4D4F;
+}
+
+.contact-hero {
+  text-align: center;
+  padding: 1.0rem 0 3rem;
+  position: relative;
+}
+
+.contact-hero::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 0;
+  height: 1px;
+  background: #D4B276;
+}
+
+.contact-eyebrow {
+  margin: 0 0 1rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #4D4D4F;
+}
+
+.contact-hero .page-title {
+  margin: 0 0 1rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 0.95;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: #D4B276;
+}
+
+.contact-intro {
+  max-width: 620px;
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 1.9;
+  color: #4D4D4F;
+}
+
+/* GRID */
+.contact-info {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  margin-top: 28px;
-  padding-top: 3.2rem;
-  padding: 2.0rem 2rem;
-  position: relative;
-  overflow: hidden;
-  background: radial-gradient(900px 260px at 50% 0%, rgba(217,184,110,.16), transparent 65%), linear-gradient(180deg, #070709, #0c0c10);
-  border: 1px solid rgba(247,231,176,.10);
-  border-radius: 22px;
-  box-shadow: 0 20px 70px rgba(0,0,0,.55);
-}
-
-  .contact-page::after {
-    content: "";
-    position: absolute;
-    inset: -40%;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
-    mix-blend-mode: overlay;
-    opacity: .06;
-    pointer-events: none;
-    transform: rotate(8deg);
-  }
-
-  /* Nagłówek “Kontakt” — złoty, na środku */
-  .contact-page .page-title {
-    text-align: center;
-    font-size: clamp(2.1rem, 3.2vw, 3.2rem);
-    margin: 0 0 2.4rem;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    background: linear-gradient(115deg, #f7e7b0 0%, #d9b86e 35%, #ffffff 50%, #d9b86e 65%, #a8843a 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-shadow: 0 0 16px rgba(217,184,110,.12);
-  }
-
-/* Grid kontaktu — dwie kolumny + mapa na pełną szerokość */
-.contact-info {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.6rem;
-  align-items: stretch;
-  margin-top: 1.4rem;
+  gap: 0;
 }
 
-  /* =========================
-   KARTY
-   ========================= */
+/* KARTY */
+.info-card {
+  padding: 1.65rem 1.5rem;
+  text-align: center;
+  border-bottom: 1px solid #D4B276;
+  background: transparent;
+}
 
-  .contact-info .info-card {
-    padding: 1.4rem;
-    display: flex;
-    flex-direction: column;
-    border-radius: 16px;
-    background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-    border: 1px solid rgba(247,231,176,.16);
-    box-shadow: 0 14px 45px rgba(0,0,0,.45);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    position: relative;
-    overflow: hidden;
-    transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s cubic-bezier(.2,.8,.2,1), border-color .35s cubic-bezier(.2,.8,.2,1);
-  }
-
-    .contact-info .info-card::before {
-      content: "";
-      position: absolute;
-      inset: -2px;
-      background: radial-gradient(700px 200px at 20% 0%, rgba(247,231,176,.14), transparent 60%);
-      opacity: 0;
-      transition: opacity .35s cubic-bezier(.2,.8,.2,1);
-      pointer-events: none;
-    }
-
-    .contact-info .info-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 70px rgba(0,0,0,.55);
-      border-color: rgba(247,231,176,.30);
-    }
-
-      .contact-info .info-card:hover::before {
-        opacity: 1;
-      }
-
-    /* =========================
-   TYPOGRAFIA
-   ========================= */
-
-    .contact-info .info-card h3 {
-      margin: 0 0 .9rem;
-      font-size: .95rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: rgba(247,231,176,.88);
-    }
-
-    .contact-info .info-card p {
-      margin: 0;
-      color: rgba(244,244,246,.78);
-      line-height: 1.75;
-    }
+.address-card,
+.hours-card,
+.cta-card {
+  border-right: 1px solid #D4B276;
+}
 
 .cta-card {
-  justify-content: flex-start;
-  gap: 1.2rem;
-}
-
-/* =========================
-   SOCIAL
-   ========================= */
-
-.social-links {
-  display: flex;
-  flex-direction: column;
-  gap: .7rem;
-}
-
-/* =========================
-   LINKI
-   ========================= */
-
-.contact-info .info-card a {
-  color: rgba(244,244,246,.90);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(247,231,176,.22);
-  transition: color .25s ease, border-color .25s ease, transform .25s ease;
-}
-
-  .contact-info .info-card a:hover {
-    color: rgba(247,231,176,.95);
-    border-bottom-color: rgba(247,231,176,.55);
-  }
-
-/* =========================
-   UKŁAD KOLUMN (KLASY, NIE nth-child)
-   ========================= */
-
-/* lewa */
-.address-card {
-  grid-column: 1;
-  grid-row: 1;
-  padding: 1.7rem;
-  border-color: rgba(247,231,176,.22);
+  grid-column: 1 / -1;
+  text-align: center;
+  border-right: none;
+  border-left: none;
 }
 
 .email-card {
-  grid-column: 1;
-  grid-row: 2;
+  border-right: 0;
 }
 
-.hours-card {
-  grid-column: 1;
-  grid-row: 3;
+.card-label {
+  display: none;
 }
 
-/* prawa: rezerwacja + telefon + social */
-.cta-card {
-  grid-column: 2;
-  grid-row: 1;
-  padding: 1.0rem;
-  border-color: rgba(247,231,176,.26);
+.card-content {
+  max-width: 400px;
+  margin: 0 auto;
 }
 
-.phone-card {
-  grid-column: 2;
-  grid-row: 2;
-}
+  .card-content p {
+    margin: 0 0 0.55rem;
+    font-size: 1rem;
+    line-height: 1.85;
+    color: #4D4D4F;
+  }
 
-.social-card {
-  grid-column: 2;
-  grid-row: 3;
-}
+    .card-content p:last-child {
+      margin-bottom: 0;
+    }
 
-/* Godziny jako “pille” */
-.hours-pill {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  margin-top: .8rem;
-  padding: .8rem .9rem;
-  border-radius: 14px;
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(247,231,176,.14);
-}
+  .card-content a {
+    color: #4D4D4F;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
 
+    .card-content a:hover {
+      opacity: 0.7;
+    }
+
+/* GODZINY */
 .hours-list {
   display: flex;
   flex-direction: column;
-  gap: .1rem;
+  gap: 0.85rem;
 }
 
-.hours-note {
-  margin-top: 4rem;
-  color: rgba(244,244,246,.62);
+.hours-pill {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  border: 0;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #4D4D4F;
 }
 
-.email-card a {
-  display: inline-block;
-  padding: .65rem 1rem;
-  border-radius: 12px;
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(247,231,176,.14);
-  color: rgba(244,244,246,.92);
-  text-decoration: none;
-  transition: transform .25s ease, border-color .25s ease;
-}
-
-  .email-card a:hover {
-    transform: translateY(-2px);
-    border-color: rgba(247,231,176,.30);
+  .hours-pill span:first-child {
+    color: #4D4D4F;
   }
 
+/* BOOKSY */
 .booksy-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 50px;
-  padding: 0 18px;
+  margin-top: 0.8rem;
+  padding: 1rem 1.9rem;
+  border: 1px solid #D4B276;
   border-radius: 999px;
-  font-weight: 700;
-  letter-spacing: .02em;
-  border: 1px solid rgba(255,255,255,.16);
-  background: linear-gradient(115deg, rgba(247,231,176,.92), rgba(217,184,110,.78));
-  color: rgba(8,8,10,.95);
-  box-shadow: 0 12px 28px rgba(217,184,110,.18);
-  border-bottom: none;
-  transition: transform .3s ease, filter .3s ease;
+  background: #D4B276;
+  color: #ffffff;
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  transition: background 0.2s ease, transform 0.2s ease, filter 0.2s ease;
 }
 
   .booksy-btn:hover {
-    transform: translateY(-3px);
-    filter: brightness(1.03);
+    filter: brightness(0.92);
+    transform: translateY(-1px);
   }
+
+/* SOCIAL */
+.social-card .card-content {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .social-links {
   display: flex;
   flex-direction: column;
-  gap: .7rem;
-  margin-top: .2rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
 }
 
 .social-link {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: .75rem;
-  padding: .75rem .9rem;
-  border-radius: 14px;
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(247,231,176,.14);
-  box-shadow: 0 10px 24px rgba(0,0,0,.25);
-  border-bottom: none;
+  justify-content: center;
+  gap: 0.65rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #4D4D4F;
+  text-decoration: none;
 }
 
-  .social-link:hover {
-    transform: translateY(-2px);
-    border-color: rgba(247,231,176,.28);
-  }
-
-.social-ico {
-  width: 38px;
-  height: 38px;
-  border-radius: 999px;
-  display: grid;
-  place-items: center;
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(247,231,176,.16);
-  box-shadow: 0 10px 24px rgba(0,0,0,.22);
-  flex: 0 0 38px;
+.social-icon {
+  width: 1.05rem;
+  height: 1.05rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #4D4D4F;
+  opacity: 0.9;
 }
 
-  .social-ico svg {
-    width: 20px;
-    height: 20px;
-    fill: rgba(217,184,110,.95);
+  .social-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
   }
 
+/* MAPA */
 .map-card {
   grid-column: 1 / -1;
-  grid-row: 4;
-  padding: 1.2rem;
+  border-right: 0;
+  padding: 2rem 0 0;
+  border-bottom: 0;
 }
 
+  .map-card .card-content {
+    max-width: 100%;
+  }
+
 .map-embed {
-  margin-top: .9rem;
-  border-radius: 16px;
   overflow: hidden;
-  border: 1px solid rgba(247,231,176,.16);
-  background: rgba(255,255,255,.03);
-  box-shadow: 0 14px 45px rgba(0,0,0,.35);
+  border-top: 1px solid rgba(0,0,0,0.06);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  background: #ffffff;
 }
 
   .map-embed iframe {
@@ -299,46 +230,66 @@
     height: 360px;
     border: 0;
     display: block;
-    filter: saturate(1.05) contrast(1.03);
+    filter: grayscale(1) contrast(0.95) brightness(1.03);
   }
 
-/* Responsive */
+.phone-card .card-content {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+  .address-card .card-content p,
+  .phone-card .card-content p {
+    font-size: 1rem;
+    color: #4D4D4F;
+  }
+
+/* tablet */
 @media (max-width: 900px) {
   .contact-page {
-    padding: 3rem 1rem;
-    border-radius: 18px;
+    padding: 2.5rem 1.1rem 3.5rem;
+  }
+
+  .contact-info {
+    max-width: 680px;
+  }
+
+  .info-card {
+    padding: 1.4rem 1.1rem;
+  }
+}
+
+/* mobile */
+@media (max-width: 680px) {
+  .contact-hero {
+    padding: 1.6rem 0 2.2rem;
   }
 
   .contact-info {
     grid-template-columns: 1fr;
   }
 
-  .address-card, .email-card, .hours-card,
-  .cta-card, .phone-card, .social-card,
+  .address-card,
+  .email-card,
+  .hours-card {
+    border-right: 0;
+  }
+
+  .info-card {
+    padding: 1.25rem 0.2rem;
+  }
+
+  .card-content {
+    max-width: 100%;
+  }
+
   .map-card {
-    grid-column: auto;
-    grid-row: auto;
-  }
-
-  .cta-card {
-    order: -3;
-  }
-
-  .phone-card {
-    order: -2;
-  }
-
-  .social-card {
-    order: -1;
+    padding-top: 1.4rem;
   }
 
   .map-embed iframe {
-    height: 300px;
-  }
-}
-
-@media (max-width: 560px) {
-  .map-embed iframe {
-    height: 260px;
+    height: 280px;
   }
 }

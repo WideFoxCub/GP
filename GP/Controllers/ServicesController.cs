@@ -10,7 +10,6 @@ namespace GP.Controllers
     [ApiController]
     public class ServicesController : ControllerBase
     {
-        // Dependency Injection - .NET automatycznie injektuje serwis
         private readonly IServiceService _serviceService;
         private readonly IValidator<CreateServiceDto> _createValidator;
         private readonly IValidator<UpdateServiceDto> _updateValidator;
@@ -61,12 +60,10 @@ namespace GP.Controllers
         [HttpPost]
         public async Task<ActionResult<ServiceDto>> Create([FromBody] CreateServiceDto createServiceDto)
         {
-            // Walidacja danych
             var validationResult = await _createValidator.ValidateAsync(createServiceDto);
 
             if (!validationResult.IsValid)
             {
-                // Zwróć błędy walidacji
                 var errors = validationResult.Errors
                     .GroupBy(x => x.PropertyName)
                     .ToDictionary(
@@ -81,10 +78,8 @@ namespace GP.Controllers
                 });
             }
 
-            // Stwórz usługę w bazie
             var service = await _serviceService.CreateServiceAsync(createServiceDto);
 
-            // Zwróć 201 Created + lokalizacja nowego zasobu
             return CreatedAtAction(nameof(GetById), new { id = service.Id }, service);
         }
 
@@ -96,7 +91,6 @@ namespace GP.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<ServiceDto>> Update(int id, [FromBody] UpdateServiceDto updateServiceDto)
         {
-            // Walidacja danych
             var validationResult = await _updateValidator.ValidateAsync(updateServiceDto);
 
             if (!validationResult.IsValid)
@@ -115,7 +109,6 @@ namespace GP.Controllers
                 });
             }
 
-            // Zaktualizuj usługę
             var service = await _serviceService.UpdateServiceAsync(id, updateServiceDto);
 
             if (service == null)
@@ -140,9 +133,7 @@ namespace GP.Controllers
                 return NotFound($"Usługa o ID {id} nie znaleziona");
             }
 
-            // Zwróć 204 No Content (standard dla DELETE)
             return NoContent();
         }
     }
 }
-

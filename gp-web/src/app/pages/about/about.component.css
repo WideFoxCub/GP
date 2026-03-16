@@ -1,7 +1,3 @@
-/* =========================
-   ABOUT — kontener jak Kontakt
-   ========================= */
-
 .about-page {
   max-width: 1200px;
   margin: 0 auto;
@@ -27,7 +23,6 @@
     transform: rotate(8deg);
   }
 
-  /* Nagłówek identyczny jak w kontakcie */
   .about-page .page-title {
     text-align: center;
     font-size: clamp(2.1rem, 3.2vw, 3.2rem);
@@ -41,7 +36,6 @@
     text-shadow: 0 0 16px rgba(217,184,110,.12);
   }
 
-/* Siatka kart */
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -50,8 +44,6 @@
   margin-top: 1.4rem;
 }
 
-  /* Karty — biorą styl z .contact-info .info-card,
-   ale dajemy też wersję dla about, żeby działało niezależnie */
   .about-grid .info-card {
     padding: 1.4rem;
     display: flex;
@@ -105,7 +97,6 @@
       margin-top: .9rem;
     }
 
-/* Lista usług: ładna, “pillowata” */
 .services-list {
   list-style: none;
   padding: 0;
@@ -124,7 +115,6 @@
     line-height: 1.55;
   }
 
-/* CTA karta */
 .about-cta-card {
   border-color: rgba(247,231,176,.26);
   gap: 1rem;
@@ -135,7 +125,6 @@
     color: rgba(244,244,246,.62);
   }
 
-/* Jeśli nie masz globalnie .booksy-btn, to zostaw ten sam styl jak w kontakcie */
 .about-grid .booksy-btn {
   display: inline-flex;
   align-items: center;
@@ -159,13 +148,10 @@
     filter: brightness(1.03);
   }
 
-/* Układ kart (opcjonalnie: kontrola szerokości) */
 .about-card {
   grid-column: 1 / -1;
 }
-/* opis na pełną szerokość */
 
-/* Responsive */
 @media (max-width: 900px) {
   .about-page {
     padding: 3rem 1rem;

@@ -10,13 +10,11 @@ namespace GP.Data
     {
         public static void Initialize(GpDbContext context)
         {
-            // Jeśli są już usługi w bazie, nie dodawaj ponownie
             if (context.Services.Any())
             {
                 return;
             }
 
-            // Domyślne usługi salonu
             var services = new List<Service>
             {
                 new()
@@ -75,7 +73,6 @@ namespace GP.Data
                 }
             };
 
-            // Dodaj usługi do bazy
             context.Services.AddRange(services);
             context.SaveChanges();
         }

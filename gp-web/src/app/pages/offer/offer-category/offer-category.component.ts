@@ -29,7 +29,7 @@ export class OfferCategoryComponent implements OnInit {
       map((cat): ServiceCategory | undefined =>
         cat === 'nails' || cat === 'cosmetology' ? cat : undefined
       ),
-      distinctUntilChanged(), // nie rób requestu jeśli kategoria ta sama
+      distinctUntilChanged(),
       tap(category => {
         this.title =
           category === 'nails' ? 'Stylizacja paznokci' :

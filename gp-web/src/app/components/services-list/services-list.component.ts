@@ -34,13 +34,13 @@ export class ServicesListComponent implements OnInit {
         console.log('✅ Dane otrzymane:', data);
         this.services = data;
         this.loading = false;
-        this.cdr.detectChanges(); // ← WYMUŚ CHANGE DETECTION!
+        this.cdr.detectChanges();
       },
       error: (err: any) => {
         console.error('❌ Błąd:', err);
         this.error = 'Błąd przy ładowaniu usług: ' + err.message;
         this.loading = false;
-        this.cdr.detectChanges(); // ← WYMUŚ CHANGE DETECTION!
+        this.cdr.detectChanges();
       },
       complete: () => {
         console.log('✅ Request completed');

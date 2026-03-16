@@ -12,7 +12,6 @@ namespace GP.Services
     /// </summary>
     public class ServiceService : IServiceService
     {
-        // DbContext - umożliwia komunikację z bazą
         private readonly GpDbContext _context;
 
         public ServiceService(GpDbContext context)
@@ -114,7 +113,6 @@ namespace GP.Services
 
         public async Task<bool> DeleteServiceAsync(int id)
         {
-            // Znajdź usługę w bazie
             var service = await _context.Services.FindAsync(id);
 
             if (service == null)
@@ -122,7 +120,6 @@ namespace GP.Services
                 return false;
             }
 
-            // Soft delete - zmień IsActive na false
             service.IsActive = false;
             await _context.SaveChangesAsync();
 

@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 export class AdminComponent {
   isLoggedIn = false;
   password = '';
-  adminPassword = 'admin123'; // TODO: Zmień hasło!
+  adminPassword = 'admin123';
 
   login(): void {
     if (this.password === this.adminPassword) {
